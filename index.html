@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUSTIIIIIVE的小站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            background-color: #e3fde3;
+            overflow-x: hidden;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        .wrap {
+            position: relative;
+            min-height: 100vh;
+            padding: 80px 20px;
+        }
+        .title-box {
+            text-align: center;
+            padding: 0px 0 60px;
+        }
+        .title-box h1 {
+            font-size: 48px;
+            color: #9eff9e;
+            letter-spacing: 10px;
+        }
+        .title-box p {
+            margin-top: 6px;
+            color: #51f851;
+            font-size: 18px;
+        }
+
+        /* 导航卡片 和你照片item样式统一 */
+        .nav-card {
+            position: absolute;
+            width: 320px;
+            transition: transform 0.3s ease-out, z-index 0.3s;
+            cursor: pointer;
+        }
+        .nav-card a {
+            display: block;
+            text-decoration: none;
+        }
+        .nav-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            border: 10px solid #fbd7b9;
+            background: #fff;
+        }
+        .nav-card .name {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* 悬浮效果 和原图保持一致 */
+        .nav-card:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 99;
+        }
+        .nav-card:hover img{
+            box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+        }
+
+        /* 卡片错落位置+倾斜 */
+        .c1 { top: 180px; left: 120px; transform: rotate(-3deg); }
+        .c2 { top: 160px; right: 150px; transform: rotate(3deg); }
+        .c3 { top: 520px; left: 280px; transform: rotate(-2deg); }
+        .c4 { top: 500px; right: 220px; transform: rotate(-4deg); }
+        .c5 { top: 880px; left: 420px; transform: rotate(2deg); }
+
+        /* 移动端适配，和你照片墙规则完全一致 */
+        @media (max-width: 900px) {
+            .title-box h1 {
+                font-size: 28px;
+            }
+            .nav-card {
+                width: 70vw !important;
+                position: relative !important;
+                margin: 40px auto !important;
+                left: auto !important;
+                right: auto !important;
+                top: auto !important;
+                transform: rotate(0deg) !important;
+            }
+            .wrap {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="title-box">
+            <h1>照片墙</h1>
+        </div>
+
+        <!-- 导航卡片，对应各个动漫相册 -->
+        <div class="nav-card c1">
+            <a href="ren.html">
+                <img src="忍/3.png" alt="忍野忍">
+                <div class="name">忍野忍</div>
+            </a>
+        </div>
+
+        <div class="nav-card c2">
+            <a href="onepiece.html">
+                <img src="海贼王/封面.jpg" alt="海贼王">
+                <div class="name">海贼王</div>
+            </a>
+        </div>
+
+        <div class="nav-card c3">
+            <a href="jujutsu.html">
+                <img src="咒术/封面.jpg" alt="咒术回战">
+                <div class="name">咒术回战</div>
+            </a>
+        </div>
+
+        <div class="nav-card c4">
+            <a href="demon.html">
+                <img src="鬼灭/封面.jpg" alt="鬼灭之刃">
+                <div class="name">鬼灭之刃</div>
+            </a>
+        </div>
+
+        <div class="nav-card c5">
+            <a href="other.html">
+                <img src="其他/封面.jpg" alt="其他动漫">
+                <div class="name">其他动漫合集</div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // 图片加载失败提示，沿用你原来的逻辑
+        const imgs = document.querySelectorAll('img');
+        imgs.forEach(img=>{
+            img.onerror = function(){
+                this.style.padding="20px";
+                this.alt = "封面图片缺失，请检查文件夹路径";
+            }
+        })
+    </script>
+</body>
+</html>
